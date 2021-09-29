@@ -10,16 +10,12 @@ if($db -> connect_errno){
 
 
 function generate_random_session(){
-  $str_char = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  $str_length = strlen($str_char);
 
-  $random_session = '';
+    $random_str = rand();
 
-  for($i=0;i < $str_length; $i++){
-      $random_session .= $str_char[rand(0,$str_length -1)];
-  }
+    $random_session = hash('sha256',$random_str);
 
-  return $random_session;
+    return $random_session;   
 
 }
 
@@ -32,6 +28,7 @@ function get_data_login($user_email,$password){
     if(mysqli_num_rows($result) > 0){
 
         while($row = $result->fetch_assoc()){
+            $_SESSION['session_id'] = generate_random_session();
             $_SESSION["name"] = $row["name"];
             $_SESSION["role"] = $row["role"];
         }
