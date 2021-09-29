@@ -1,12 +1,15 @@
 <!-- script for action button Edit/Delete -->
 
 <?php
-// session_start();
+session_start();
 
-// $uid = $_GET['uid'];
-// $acton = $_GET['act'];
+$uid = $_GET['uid'];
+$acton = $_GET['act'];
+$session_id = $_SESSION['session_id'];
 
-// echo($uid.$acton);
+if (empty($session_id)) {
+    include('../template/not_login.php');
+}
 
 
 
