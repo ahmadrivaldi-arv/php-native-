@@ -22,21 +22,22 @@ function generate_random_session(){
 function get_data_login($user_email,$password){
 
     global $db;
-    $sql = "select * from tbl_users where email='$user_email' and password='$password'";
-    $result = $db->query($sql);
-    
-    if(mysqli_num_rows($result) > 0){
 
-        while($row = $result->fetch_assoc()){
-            $_SESSION['session_id'] = generate_random_session();
-            $_SESSION["name"] = $row["name"];
-            $_SESSION["role"] = $row["role"];
-        }
-    
-        return true;
+    $result = $db->query("select * from tbl_users where email='$user_email'");
 
-    }else {
-        return false;
+    foreach ($result as $user_data) {
+      if(!password_verify($password,$user_data['password'])){
+          return false;
+      }else {
+        
+        $_SESSION['session_id'] = generate_random_session();
+        $_SESSION['name'] = $user_data['name'];
+        $_SESSION['email'] = $user_data['email'];
+        $_SESSION['role'] = $user_data['role'];
+
+        return TRUE;
+      }
+      
     }
 }
 function get_data_users(){
@@ -54,26 +55,6 @@ function get_data_users(){
         }
     }
     return $rows;
-}
-function get_data_barang(){
-  
-    global $db;
-    $sql = "select * from tbl_barang";
-
-    $result = $db->query($sql);
-
-    $rows= [];
-
-    while ($row = $result->fetch_assoc()) {
-            
-        // $rows["id"] = $row["barangId"];
-        // $rows["nama_barang"] = $row["namaBarang"];
-        // $rows["harga_modal"] = $row["hargaModal"];
-        // $rows["harga_jual"] = $row["hargaJual"];
-        $rows[]=$row;
-    }
-    return json_encode($rows,JSON_PRETTY_PRINT);
-
 }
 
 
@@ -107,4 +88,31 @@ function if_user_exist($user_email){
 
 }
 
+
+function delete_user($userid){
+    global  $db;
+    $sql = "delete from tbl_users where id='$userid'";
+
+    if($db->query($sql)){
+        return TRUE;
+    }else {
+        return FALSE;
+    }
+
+}
+
+function add_new_user($full_name,$email,$password,$role){
+    global $db;
+    $password_hash = password_hash($password,PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO tbl_users VALUES(null,'$full_name','$email','$password_hash','$role')";
+    
+    if($db->query($sql)){ 
+
+        return TRUE;
+    }
+    else {
+        // $_SESSION['sql_status'] = "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
 ?>
