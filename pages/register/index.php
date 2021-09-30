@@ -104,7 +104,7 @@ if(isset($_POST['btn_submit'])){
                             
                         </form>
 
-                        <label for="" class="cpr">&copy; adminsite.com 2021</label>
+                        <!-- <label for="" class="text-center">&copy; adminsite.com 2021</label> -->
                     </div>
                 </div>
             </div>
