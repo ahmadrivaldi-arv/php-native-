@@ -6,16 +6,15 @@ if (isset($_POST['login_btn'])) {
     $user_email = $_POST['email'];
     $user_password = $_POST['password'];
 
-    if (get_data_login($user_email,$user_password)) {
-        if($_SESSION['role']=="admin"){
-
-            header("location:pages/admin/");
-        }
+    if(get_data_login($user_email,$user_password)){
+      if($_SESSION['role'] == 'admin'){
+        header("location:pages/admin");
+      }
     }else {
-      
-      echo("<sript>alert('username or pasword incorrect')</script>");
+      echo("<script>alert('username or password incorrect')</script>");
     }
 
+    
 }
 
 
