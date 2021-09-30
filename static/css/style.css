@@ -1,38 +1,45 @@
-.no-border{
+.no-border {
     border: none;
 }
 
-.b-radius-10{
+.b-radius-10 {
     border-radius: 10px;
 }
 
 
 /* match parent heigt the submit button */
-.mb-3 button{
+
+.mb-3 button {
     width: 100%;
 }
 
-h3{
+h3 {
     font-weight: bold;
 }
 
-.cpr{
-    
+.cpr {
     margin-left: 100px;
 }
 
-.mb-3 p{
+.mb-3 p {
     font-size: 12px;
 }
 
-.mb-3 a{
+.mb-3 a {
     text-decoration: none;
 }
 
-.btnku{
-
+.btnku {
     height: 10px;
     background: #00A19D;
     box-shadow: 0px 3px 50px rgba(0, 161, 157, 0.2);
     border-radius: 88px;
+}
+
+#btn-search {
+    display: inline;
+}
+
+.frm-select {
+    color: red;
 }
