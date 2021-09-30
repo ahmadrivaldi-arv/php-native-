@@ -55,7 +55,7 @@ if(isset($_POST['btn-submit'])){
                     </button>
                 </div>
                 <div class="col-1 offset-8">
-                    <button type="submit" class="btn" style="border:1px solid green">
+                    <button type="submit" class="btn" style="border:1px solid green" data-bs-target="#add-user-modal" data-bs-toggle="modal">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -136,6 +136,8 @@ if(isset($_POST['btn-submit'])){
         </div>
     </div>
     <?php endforeach;?>
+
+    <!-- add user modal -->
     <div class="modal fade" id="add-user-modal" tabindex="-1" aria-labelledby="add-user-modal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
