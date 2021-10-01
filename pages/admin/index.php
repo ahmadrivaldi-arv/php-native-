@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../template/header.php");
+// include("../template/header.php");
 include("../../lib/function.php");
 
 $users_data = get_data_users();
@@ -36,11 +36,13 @@ if(isset($_POST['btn-submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../../static/fontawesome/css/all.css">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>Admin</title>
 </head>
 
-<body>
+<body class="custom-font">
 
 <div class="container-fluid">
 
@@ -55,7 +57,7 @@ if(isset($_POST['btn-submit'])){
                     </button>
                 </div>
                 <div class="col-1 offset-8">
-                    <button type="submit" class="btn" style="border:1px solid green" data-bs-target="#add-user-modal" data-bs-toggle="modal">
+                    <button type="submit" class="btn text-primary" data-bs-target="#add-user-modal" data-bs-toggle="modal">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -67,7 +69,7 @@ if(isset($_POST['btn-submit'])){
 
                     <div class="table-responsive">
 
-                        <table class="table text-center table-striped table-bordered">
+                        <table class="table text-center table-striped table-bordered custom-font" >
                             <thead>
                                 <tr>
                                     <th scope="col">NO</th>
@@ -92,13 +94,13 @@ if(isset($_POST['btn-submit'])){
                                 <th scope="row"><?=$ud['id'];?></th>
                                 <td scope="row"><?=$ud['name'];?></td>
                                 <td scope="row"><?=$ud['email'];?></td>
-                                <td scope="row"><?=$ud['role'];?></td>
+                                <td scope="row"><?= ucfirst($ud['role']);?></td>
 
                                 <td>
 
-                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                    <button class="btn text-primary" data-bs-toggle="modal"
                                         data-bs-target="#modal-edit-<?php echo($ud['id'])?>"><i class="far fa-edit"></i></button>
-                                    <button class="btn btn-danger" data-bs-toggle="modal"
+                                    <button class="btn text-danger" data-bs-toggle="modal"
                                         data-bs-target="#modal-delete-<?php echo($ud['id'])?>"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
