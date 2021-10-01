@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$db = new mysqli("localhost","admin","admin1912","db_login");
+$db = new mysqli("localhost","superadmin","super","db_login");
 
 if($db -> connect_errno){
     echo("failed to connect to databse!");

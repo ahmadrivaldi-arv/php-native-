@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+
 .no-border {
     border: none;
 }
-
+body{
+    font-family: 'Noto Sans Display', sans-serif;
+}
 .b-radius-10 {
     border-radius: 10px;
 }
@@ -30,7 +35,7 @@ h3 {
 }
 
 .btnku {
-    height: 10px;
+    height: 20px;
     background: #00A19D;
     box-shadow: 0px 3px 50px rgba(0, 161, 157, 0.2);
     border-radius: 88px;
