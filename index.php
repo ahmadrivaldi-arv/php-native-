@@ -10,6 +10,9 @@ if (isset($_POST['login_btn'])) {
       if($_SESSION['role'] == 'admin'){
         header("location:pages/admin");
       }
+      elseif($_SESSION['role'] == 'user'){
+        header('location:pages/admin');
+      }
     }else {
       echo("<script>alert('username or password incorrect')</script>");
     }
@@ -54,25 +57,25 @@ if (isset($_POST['login_btn'])) {
       <div class="col-md-7 col-lg-5">
         <div class="card shadow-lg no-border b-radius-10" >
           <div class="card-body">
-            <h3 class="mb-5 mt-3 text-center text-h3">SIGN IN</h3>
+            <h3 class="mb-5 mt-3 text-center text-primary">SIGN IN</h3>
              
              <form action="" method="post">
  
               <div class="mb-3">
-                <input type="email" id="email1" class="form-control frm-border" value="<?php if(isset($_POST['email'])) echo($_POST['email']);?>" placeholder="Email" name="email">
+                <input type="email" id="email1" class="form-control" value="<?php if(isset($_POST['email'])) echo($_POST['email']);?>" placeholder="Email" name="email">
               </div>
  
               <div class="mb-3">
-                <input type="password" name="password" id="password" class="form-control frm-border"  placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control"  placeholder="Password">
               </div>
  
               <div class="mb-3 form-check">
                   <input type="checkbox" class="form-check-input" id="checkbox1">
-                  <label class="form-check-label" for="checkbox1">show password</label>
+                  <label class="form-check-label" for="checkbox1" id="showpass">show password</label>
               </div>
  
               <div class="d-grid gap-2">
-                <button class="button-me btn no-border" name="login_btn" id="login_btn" type="submit">Sign In</button>
+                <button class="btn-primary btn" name="login_btn" id="login_btn" type="submit">Sign In</button>
               </div>  
  
               <p class="mt-3">New member? <a href="pages/register/" class="text-decoration-none">Create account</a></p>
